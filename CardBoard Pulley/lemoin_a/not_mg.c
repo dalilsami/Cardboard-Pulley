@@ -3,8 +3,10 @@
 #include <stdio.h>
 #include "room.h"
 
-int count_lines(FILE *file);
-void my_putstr(char* str);
+int      count_lines(FILE *file);
+void     my_putstr(char* str);
+char		*readline();
+char input;
 
 int main() {
   t_room salle;
@@ -20,8 +22,10 @@ int main() {
       my_putstr("Erreur: cargo_dock.map introuvable");
       return 0;
     }
-  //nb_line = count_lines(map);
-  nb_line = 18;
+  while ((c = getc(fp)) != EOF){
+    if (c == '\n')
+        ++nb_line;
+    }
   salle.map = malloc(sizeof(str) * nb_line);
   fseek(map, 0, 0);
   while (fgets(str, 60, map) != NULL)
@@ -32,6 +36,7 @@ int main() {
     }
   fclose(map);
   free(salle.map);
+  input = readline();
   return 0;
 }
 
