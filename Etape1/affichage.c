@@ -1,59 +1,46 @@
-#include <unistd.h>
-#include <fcntl.h>
-#include <stdlib.h>
-#include "room.h"
+#include	"game.h"
 
-void	my_putstr(char *str);
-void	my_putchar(char c);
-int	my_strlen(char *str);
-char	**position(char **map, int *abscisse, int *ordonnee);
-void	affichage(char **map);
-
-int	main() {
-  int	position_x;
-  int	position_y;
-
-  position_x = 0;
-  position_y = 0;
-  affichage(map);
-  position(map, &position_x, &position_y);
-  affichage(map);
-  return 0;
-}
-
-void	affichage(char **map) {
+void	affichage(char **map, int nb, t_player p)
+{
   int	i;
   int	j;
 
   i = 0;
-  while (i < 11) {
-    j = 0;
-    while (map[i][j]) {
-      my_putchar(map[i][j]);
-      j++;
+  while (i < nb)
+    {
+      j = 0;
+      while (j < my_strlen(map[i]))
+	{
+	  if (i == p.posy && j == p.posx)
+	    my_putchar('i');
+	  else
+	    my_putchar(map[i][j]);
+	  j++;
+	}
+      my_putchar('\n');
+      i++;
     }
-    my_putchar('\n');
-    i++;
-  }
 }
 
-char	**position(char **map, int *abscisse, int *ordonnee) {
+int	init_position(char **map, t_player *p) {
   int	i;
   int	j;
 
   i = 0;
-  while (i < 12) {
-    j = 0;
-    while (j < my_strlen(map[i])) {
-      if (map[i][j] == 'O') {
-	map[i][j] = 'i';
-	*abscisse = j;
-	*ordonnee = i;
-	return map;
-      }
-      j++;
+  while (i < 12)
+    {
+      j = 0;
+      while (j < my_strlen(map[i]))
+	{
+	  if (map[i][j] == 'O')
+	    {
+	      p->posx = j;
+	      p->posy = i;
+	      return 1;
+	    }
+	  j++;
+	}
+      i++;
     }
-    i++;
-  }
   return 0;
 }
