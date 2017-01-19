@@ -1,12 +1,10 @@
 #include	"game.h"
 
-int	move_up(t_player *p, char **map)
+int	move_up(t_player *p, t_room salle)
 {
   if (p->posy == 0)
-    {
       return 2;
-    }
-  else if (map[p->posy - 1][p->posx] == 'X')
+  else if (salle.map[p->posy - 1][p->posx] == 'X')
     {
       my_putstr("Vous ne pouvez pas aller dans cette direction, \
 il y a un mur\n");
@@ -19,45 +17,58 @@ il y a un mur\n");
     }
 }
 
-int	move_down(t_player *p, char **map)
+int	move_down(t_player *p, t_room salle)
 {
-  if (map[p->posy + 1][p->posx] == 'X')
+  if (p->posy == (salle.lines - 1))
+    return 2;
+  else if (salle.map[p->posy + 1][p->posx] == 'X')
     {
       my_putstr("Vous ne pouvez pas aller dans cette direction, \
 il y a un mur\n");
       return 1;
     }
-  p->posy++;
-  return 0;
+  else
+    {
+      p->posy = p->posy + 1;
+      return 0;
+    }
 }
 
-int	move_left(t_player *p, char **map)
+int	move_left(t_player *p, t_room salle)
 {
-  if (map[p->posy][p->posx - 1] == 'X')
+  if (p->posx == 0)
+    return 2;
+  else if (salle.map[p->posy][p->posx - 1] == 'X')
     {
       my_putstr("Vous ne pouvez pas aller dans cette direction, \
 il y a un mur\n");
       return 1;
     }
-  p->posx--;
-  return 0;
+  else
+    {
+      p->posx = p->posx - 1;
+      return 0;
+    }
 }
 
-int	move_right(t_player *p, char **map)
+int	move_right(t_player *p, t_room salle)
 {
-  if (map[p->posy][p->posx + 1] == 'X')
+  if (p->posx == (my_strlen(salle.map[p->posy]) - 1))
+    return 2;
+  else if (salle.map[p->posy][p->posx + 1] == 'X')
     {
       my_putstr("Vous ne pouvez pas aller dans cette direction, \
 il y a un mur\n");
       return 1;
     }
-  p->posx++;
-  return 0;
+  else
+    {
+      p->posx = p->posx + 1;
+      return 0;
+    }
 }
 
-int	quit(t_player *p, char **map)
+int	quit()
 {
-  my_put_nbr(p->posx);
-  my_putchar(map[0][0]);
-  return 0;
+  return 2;
 }

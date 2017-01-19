@@ -9,6 +9,7 @@
 typedef struct	s_room
 {
   char          **map;
+  int		lines;
   struct room   *next;
 }               t_room;
 
@@ -26,14 +27,14 @@ void	title();
 void	free_tab(char **map, int nb);
 void	affichage(char **map, int nb, t_player p);
 int	count_line(char *buff);
-int	deplacement(char input, t_player *p, char **map);
+int	deplacement(char input, t_player *p, t_room salle);
 int	my_strlen(char *str);
 int	init_position(char **map, t_player *p);
-int	move_up(t_player *p, char **map);
-int	move_down(t_player *p, char **map);
-int	move_left(t_player *p, char **map);
-int	move_right(t_player *p, char **map);
-int	quit(t_player *p, char **map);
+int	move_up(t_player *p, t_room salle);
+int	move_down(t_player *p, t_room salle);
+int	move_left(t_player *p, t_room salle);
+int	move_right(t_player *p, t_room salle);
+int	quit();
 char	*readline();
 char	*openMap();
 char	**alloc_tab(int nb);

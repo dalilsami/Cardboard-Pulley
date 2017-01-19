@@ -4,27 +4,27 @@ int	main() {
   t_room	salle;
   t_player	joueur;
   char		*buff;
-  int		nb_line;
   char		*input;
   int		ret;
   
   buff = openMap();
-  nb_line = count_line(buff);
-  salle.map = alloc_tab(nb_line);
+  salle.lines = count_line(buff);
+  salle.map = alloc_tab(salle.lines);
   salle.map = attrib_map(buff, salle.map);
+  salle.next = NULL;
   title();
   init_position(salle.map, &joueur);
   input = "";
   ret = 0;
   while (ret != 2)
     {
-      affichage(salle.map, nb_line, joueur);
+      affichage(salle.map, salle.lines, joueur);
       input = readline();
       my_putstr("\033[H\033[2J");
-      ret = deplacement(input[0], &joueur, salle.map);
+      ret = deplacement(input[0], &joueur, salle);
     }
   my_putstr("To be continued...\n");
-  free_tab(salle.map, nb_line);
+  free_tab(salle.map, salle.lines);
   return 0;
 }
 
