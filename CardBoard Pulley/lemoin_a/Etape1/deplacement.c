@@ -28,6 +28,7 @@ int	deplacement(char input,t_player *p, char **map)
       if (commandes[i].input == input)
 	{
 	  r = commandes[i].commande(p, map);
+	  my_putchar('\n');
 	  return r;
 	}
       i++;

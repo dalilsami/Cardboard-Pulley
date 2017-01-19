@@ -27,6 +27,8 @@ int	init_position(char **map, t_player *p) {
   int	j;
 
   i = 0;
+  p->posy = 0;
+  p->posx = 0;
   while (i < 12)
     {
       j = 0;

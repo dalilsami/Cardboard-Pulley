@@ -2,20 +2,21 @@
 
 int	move_up(t_player *p, char **map)
 {
-  if (map[p->posy - 1][p->posx] == 'X')
+  if (p->posy == 0)
+    {
+      return 2;
+    }
+  else if (map[p->posy - 1][p->posx] == 'X')
     {
       my_putstr("Vous ne pouvez pas aller dans cette direction, \
 il y a un mur\n");
       return 1;
     }
-  if (p->posy - 1 < 0)
+  else
     {
-      my_putstr("\033[H\033[2J");
-      my_putstr("To be continued...\n");
-      return 2;
+      p->posy = p->posy - 1;
+      return 0;
     }
-  p->posy--;
-  return 0;
 }
 
 int	move_down(t_player *p, char **map)

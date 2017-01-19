@@ -6,27 +6,25 @@ int	main() {
   char		*buff;
   int		nb_line;
   char		*input;
-
-  joueur.posx = 0;
-  joueur.posy = 0;
+  int		ret;
+  
   buff = openMap();
   nb_line = count_line(buff);
   salle.map = alloc_tab(nb_line);
   salle.map = attrib_map(buff, salle.map);
   title();
   init_position(salle.map, &joueur);
-  while (1)
+  input = "";
+  ret = 0;
+  while (ret != 2)
     {
-      input = "";
-      while (deplacement(input[0], &joueur, salle.map))
-	{
-	  affichage(salle.map, nb_line, joueur);
-	  input = readline();
-	  my_putstr("\033[H\033[2J");
-	}
+      affichage(salle.map, nb_line, joueur);
+      input = readline();
+      my_putstr("\033[H\033[2J");
+      ret = deplacement(input[0], &joueur, salle.map);
     }
+  my_putstr("To be continued...\n");
   free_tab(salle.map, nb_line);
-  
   return 0;
 }
 
