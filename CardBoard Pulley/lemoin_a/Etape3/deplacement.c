@@ -17,13 +17,13 @@ char            *readline()
   return (buff);
 }
 
-int	deplacement(char input,t_player *p, t_room salle)
+int	deplacement(char input,t_player *p, t_room *salle)
 {
   int i;
   int r;
 
   i = 0;
-  while (i < 5)
+  while (i < 8)
     {
       if (commandes[i].input == input)
 	{
