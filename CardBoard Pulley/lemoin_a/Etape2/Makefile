@@ -1,3 +1,13 @@
+##
+## Makefile for Cardboard Pulley in /home/bab/Projet_Poulet/lemoin_a/Etape2
+## 
+## Made by LE MOINE Adrien
+## Login   <lemoin_a@etna-alternance.net>
+## 
+## Started on  Fri Jan 20 10:05:51 2017 LE MOINE Adrien
+## Last update Fri Jan 20 10:06:06 2017 LE MOINE Adrien
+##
+
 CC 	= 	gcc
 
 NAME 	= 	not_mg

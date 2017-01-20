@@ -1,10 +1,20 @@
+/*
+** alloc.c for Cardboard Pulley in /home/bab/Projet_Poulet/lemoin_a/Etape1
+** 
+** Made by LE MOINE Adrien
+** Login   <lemoin_a@etna-alternance.net>
+** 
+** Started on  Fri Jan 20 10:11:00 2017 LE MOINE Adrien
+** Last update Fri Jan 20 16:50:54 2017 LE MOINE Adrien
+*/
+
 #include	"game.h"
 
 char	*openMap()
 {
-  int map;
-  int str;
-  char *buff;
+  int	map;
+  int	str;
+  char	*buff;
 
   buff = malloc(sizeof(char) * 1024);
   map = open("Maps/cargo_dock.map", O_RDONLY);

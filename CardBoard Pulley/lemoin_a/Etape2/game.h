@@ -1,3 +1,13 @@
+/*
+** game.h for Cardboard Pulley in /home/bab/Projet_Poulet/lemoin_a/Etape2
+** 
+** Made by LE MOINE Adrien
+** Login   <lemoin_a@etna-alternance.net>
+** 
+** Started on  Fri Jan 20 10:08:03 2017 LE MOINE Adrien
+** Last update Fri Jan 20 16:52:37 2017 LE MOINE Adrien
+*/
+
 #ifndef	_GAME_H_
 #define	_GAME_H_
 
@@ -30,8 +40,7 @@ void		my_put_nbr(int i);
 void		title();
 void		free_tab(char **map, int nb);
 void		affichage(t_room *salle, t_player p);
-void		game(t_player p, t_room *room);
-//void		init_cheminement(t_room *c, t_room hc, t_room hc2);
+int		game(t_player p, t_room *room);
 int		count_line(char *buff);
 int		deplacement(char input, t_player *p, t_room *salle);
 int		my_strlen(char *str);

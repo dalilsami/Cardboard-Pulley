@@ -1,8 +1,19 @@
+/*
+** initialisation.c for Cardboard Pulley in /home/bab/Projet_Poulet/lemoin_a/Etape3
+** 
+** Made by LE MOINE Adrien
+** Login   <lemoin_a@etna-alternance.net>
+** 
+** Started on  Fri Jan 20 10:03:39 2017 LE MOINE Adrien
+** Last update Fri Jan 20 15:10:20 2017 LE MOINE Adrien
+*/
+
 #include	"game.h"
 
 t_player	init_player(t_room *salle)
 {
   t_player	p;
+
   init_position(salle, &p);
   p.keys = 0;
   p.crouch = -1;
@@ -22,22 +33,45 @@ t_room		*init_room(char *path, int dx, int dy)
   room->dx = dx;
   room->dy = dy;
   room->next = NULL;
+  free(buff);
   return room;
 }
 
-/*t_room	*get_access(t_room *base, int i)
+t_guard		init_guard(t_room *salle)
 {
-  t_room	*next_room;
-  //int		n;
+  t_guard	guard;
 
-  next_room = base->next;
-  my_put_nbr(i);
-  my_putchar('\n');
-  n = 0;
-  while (n != i && next_room != NULL)
+  guard.orientation = 'o';
+  guard.posx = 0;
+  guard.posy = 0;
+  ini_orient(salle, &guard);
+  return guard;
+}
+
+int		ini_orient(t_room *salle, t_guard *g)
+{
+  int   i;
+  int   j;
+
+  i = 0;
+  g->posy = 0;
+  g->posx = 0;
+  while (i < salle->lines)
     {
-      next_room = next_room->next;
-      n++;
-      }
-  return next_room;
-  }*/
+      j = 0;
+      while (j < my_strlen(salle->map[i]))
+	{
+	  if (salle->map[i][j] == '<' || salle->map[i][j] == 'v' || \
+	      salle->map[i][j] == '^' || salle->map[i][j] == '>')
+	    {
+	      g->posx = j;
+	      g->posy = i;
+	      g->orientation = salle->map[i][j];
+	      return 1;
+	    }
+	  j++;
+	}
+      i++;
+    }
+  return 0;
+}

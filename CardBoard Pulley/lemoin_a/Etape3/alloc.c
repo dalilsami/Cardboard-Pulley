@@ -1,10 +1,20 @@
+/*
+** alloc.c for Cardboard Pulley in /home/bab/Projet_Poulet/lemoin_a/Etape3
+** 
+** Made by LE MOINE Adrien
+** Login   <lemoin_a@etna-alternance.net>
+** 
+** Started on  Fri Jan 20 10:01:50 2017 LE MOINE Adrien
+** Last update Fri Jan 20 16:56:05 2017 LE MOINE Adrien
+*/
+
 #include	"game.h"
 
 char	*openMap(char *path)
 {
-  int map;
-  int str;
-  char *buff;
+  int	map;
+  int	str;
+  char	*buff;
 
   buff = malloc(sizeof(char) * 1024);
   map = open(path, O_RDONLY);
@@ -61,9 +71,9 @@ char	**alloc_tab(int nb)
   return tab;
 }
 
-void	free_tab(char** map, int nb)
+void    free_tab(char** map, int nb)
 {
-  int	i;
+  int   i;
 
   i = 0;
   while (i < nb)
@@ -72,7 +82,6 @@ void	free_tab(char** map, int nb)
       i++;
     }
   free(map);
-  
 }
 
 int     count_line(char *buff)

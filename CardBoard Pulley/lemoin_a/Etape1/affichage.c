@@ -1,3 +1,13 @@
+/*
+** affichage.c for Cardboard Pulley in /home/bab/Projet_Poulet/lemoin_a/Etape1
+** 
+** Made by LE MOINE Adrien
+** Login   <lemoin_a@etna-alternance.net>
+** 
+** Started on  Fri Jan 20 10:10:49 2017 LE MOINE Adrien
+** Last update Fri Jan 20 10:10:50 2017 LE MOINE Adrien
+*/
+
 #include	"game.h"
 
 void	affichage(char **map, int nb, t_player p)
