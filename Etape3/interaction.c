@@ -1,3 +1,13 @@
+/*
+** interaction.c for Cardboard Pulley in /home/bab/Projet_Poulet/lemoin_a/Etape3
+** 
+** Made by LE MOINE Adrien
+** Login   <lemoin_a@etna-alternance.net>
+** 
+** Started on  Fri Jan 20 10:03:56 2017 LE MOINE Adrien
+** Last update Fri Jan 20 10:03:57 2017 LE MOINE Adrien
+*/
+
 #include	"game.h"
 
 int	crouch(t_player *p, t_room *salle)

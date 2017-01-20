@@ -1,3 +1,13 @@
+/*
+** initialisation.c for Cardboard Pulley in /home/bab/Projet_Poulet/lemoin_a/Etape2
+** 
+** Made by LE MOINE Adrien
+** Login   <lemoin_a@etna-alternance.net>
+** 
+** Started on  Fri Jan 20 10:08:37 2017 LE MOINE Adrien
+** Last update Fri Jan 20 10:08:39 2017 LE MOINE Adrien
+*/
+
 #include	"game.h"
 
 t_player	init_player(t_room *salle)
@@ -22,22 +32,6 @@ t_room		*init_room(char *path, int dx, int dy)
   room->dx = dx;
   room->dy = dy;
   room->next = NULL;
+  free(buff);
   return room;
 }
-
-/*t_room	*get_access(t_room *base, int i)
-{
-  t_room	*next_room;
-  //int		n;
-
-  next_room = base->next;
-  my_put_nbr(i);
-  my_putchar('\n');
-  n = 0;
-  while (n != i && next_room != NULL)
-    {
-      next_room = next_room->next;
-      n++;
-      }
-  return next_room;
-  }*/

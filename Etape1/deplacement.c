@@ -1,3 +1,13 @@
+/*
+** deplacement.c for Cardboard Pulley in /home/bab/Projet_Poulet/lemoin_a/Etape1
+** 
+** Made by LE MOINE Adrien
+** Login   <lemoin_a@etna-alternance.net>
+** 
+** Started on  Fri Jan 20 10:11:24 2017 LE MOINE Adrien
+** Last update Fri Jan 20 16:52:02 2017 LE MOINE Adrien
+*/
+
 #include	"game.h"
 #include	"commande.h"
 
@@ -19,8 +29,8 @@ char            *readline()
 
 int	deplacement(char input,t_player *p, t_room salle)
 {
-  int i;
-  int r;
+  int	i;
+  int	r;
 
   i = 0;
   while (i < 5)
@@ -34,5 +44,4 @@ int	deplacement(char input,t_player *p, t_room salle)
       i++;
     }
   return 1;
-  
 }

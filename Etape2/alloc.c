@@ -71,8 +71,7 @@ void	free_tab(char** map, int nb)
       free(map[i]);
       i++;
     }
-  free(map);
-  
+  free(map);  
 }
 
 int     count_line(char *buff)

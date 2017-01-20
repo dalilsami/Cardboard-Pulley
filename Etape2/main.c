@@ -1,11 +1,22 @@
+/*
+** main.c for Cardboard Pulley in /home/bab/Projet_Poulet/lemoin_a/Etape2
+** 
+** Made by LE MOINE Adrien
+** Login   <lemoin_a@etna-alternance.net>
+** 
+** Started on  Fri Jan 20 10:09:17 2017 LE MOINE Adrien
+** Last update Fri Jan 20 16:52:26 2017 LE MOINE Adrien
+*/
+
 #include "game.h"
 
-int		main() {
+int		main()
+{
   t_room	*salle;
   t_room	*baseSalle;
   t_room	*tmp;
   t_player	joueur;
-  //int		i;
+  int		ret;
 
   baseSalle = init_room("Maps/cargo_dock.map", 0, 0);
   tmp = baseSalle;
@@ -17,22 +28,25 @@ int		main() {
   tmp = salle;
   salle = baseSalle;
   joueur = init_player(salle);
-  //i = 0;
+  ret = 0;
   title();
-  while (salle != NULL)
+  while (salle != NULL && ret != 3)
     {
-      game(joueur, salle);
+      ret = game(joueur, salle);
       salle = salle->next;
-      //salle = get_access(baseSalle, 1);
-      //i++;
     }
   my_putstr("To be continued...\n");
-  free_tab(salle->map, salle->lines);
-  free(salle);
+  salle = baseSalle;
+  while (salle != NULL)
+    {
+      free_tab(salle->map, salle->lines);
+      free(salle);
+      salle = salle->next;
+    }
   return 0;
 }
 
-void	game(t_player p, t_room *room)
+int	game(t_player p, t_room *room)
 {
   char	*input;
   int	ret;
@@ -40,13 +54,15 @@ void	game(t_player p, t_room *room)
   init_position(room, &p);
   input = "";
   ret = 0;
-  while (ret != 2)
+  while (ret < 2)
     {
       affichage(room, p);
       input = readline();
       my_putstr("\033[H\033[2J");
       ret = deplacement(input[0], &p, room);
+      free(input);
     }
+  return ret;
 }
 
 void	title()
