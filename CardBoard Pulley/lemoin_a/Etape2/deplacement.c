@@ -5,7 +5,7 @@
 ** Login   <lemoin_a@etna-alternance.net>
 ** 
 ** Started on  Fri Jan 20 10:07:14 2017 LE MOINE Adrien
-** Last update Fri Jan 20 10:07:15 2017 LE MOINE Adrien
+** Last update Fri Jan 20 16:59:31 2017 LE MOINE Adrien
 */
 
 #include	"game.h"
@@ -44,5 +44,5 @@ int	deplacement(char input,t_player *p, t_room *salle)
       i++;
     }
   return 1;
-  
+
 }
